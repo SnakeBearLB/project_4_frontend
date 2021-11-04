@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import Home from "./components/Home";
 
 function App() {
-  const [cryptoState, setCryptoState] = useState({ crypto: [] });
+  const [usersState, setUsersState] = useState({ users: [] });
 
   useEffect(() => {
-    async function getCrypto() {
+    async function getUsers() {
       try {
-        const crypto = await fetch("http://localhost:3000/")
+        const users = await fetch("")
         .then(response => response.json())
-        setCryptoState({ crypto })
+        setUsersState({ users })
       } catch (error) {
         console.log(error)
       }
@@ -19,7 +19,7 @@ function App() {
     
 return (
       <div className="App">
-        <Home crypto={cryptoState.crypto} />
+        <Home users={usersState.users} />
       </div>
     );
 }
