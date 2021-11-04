@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import Home from "./components/Home";
+import Home from "./pages/Home";
+// import Nav from "./components/Nav";
+import CreateAccount from "./components/CreateAccount";
+// import Dashboard from "./components/Dashboard";
+// import Account from "./components/Account";
 
 function App() {
   const [usersState, setUsersState] = useState({ users: [] });
@@ -14,7 +18,7 @@ function App() {
         console.log(error)
       }
     }
-   getCrypto();
+   getUsers();
 }, []);
     
 return (
