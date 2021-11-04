@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import Home from "./components/Home";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [cryptoState, setCryptoState] = useState({ crypto: [] });
+
+  useEffect(() => {
+    async function getCrypto() {
+      try {
+        const crypto = await fetch("http://localhost:3000/")
+        .then(response => response.json())
+        setCryptoState({ crypto })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+   getCrypto();
+}, []);
+    
+return (
+      <div className="App">
+        <Home crypto={cryptoState.crypto} />
+      </div>
+    );
 }
 
 export default App;
