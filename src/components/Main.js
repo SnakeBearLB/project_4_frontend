@@ -19,13 +19,15 @@ const Main = (props) => {
   }
 
   const createAccount = async (user) => {
-    await fetch(URL, {
+    const data = await fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "Application/json"
       },
       body: JSON.stringify(user),
     })
+    const response = await data.json()
+    console.log(response)
     getUsers();
   }
 
