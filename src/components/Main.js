@@ -1,6 +1,6 @@
-
+import React from "react"
 import { useEffect, useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 // import Dashboard from "./components/Dashboard";
 // import Portfolio from "./components/Account";
 import LoginForm from "./LoginForm";
@@ -10,10 +10,10 @@ import CreateAccount from "../pages/CreateAccount";
 const Main = (props) => {
   const [usersState, setUsersState] = useState({ users: [] });
 
-  const URL = ""
+  const URL = "https://hidden-journey-86205.herokuapp.com/"
 
   const getUsers = async () => {
-    const reponse = await fetch(URL)
+    const response = await fetch(URL)
     const users = await response.json()
     setUsersState(users);
   }
@@ -44,15 +44,16 @@ const Main = (props) => {
 
   return (
     <main>
+      <Routes>
       <Route path="/">
         <LoginForm users={usersState.users}/>
       </Route>
       <Route path="/CreateAccount">
         <CreateAccount createAccount={createAccount}/>
       </Route>
+      </Routes>
     </main>
   )
-  
 }
 
 export default Main;
