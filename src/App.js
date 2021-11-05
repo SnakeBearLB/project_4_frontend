@@ -1,31 +1,16 @@
-import { useState, useEffect } from "react";
-import Home from "./pages/Home";
-// import Nav from "./components/Nav";
-import CreateAccount from "./components/CreateAccount";
-// import Dashboard from "./components/Dashboard";
-// import Account from "./components/Account";
+
+import Header from "./components/Header"
+import Main from "./components/Main"
+
 
 function App() {
-  const [usersState, setUsersState] = useState({ users: [] });
-
-  useEffect(() => {
-    async function getUsers() {
-      try {
-        const users = await fetch("")
-        .then(response => response.json())
-        setUsersState({ users })
-      } catch (error) {
-        console.log(error)
-      }
-    }
-   getUsers();
-}, []);
-    
-return (
-      <div className="App">
-        <Home users={usersState.users} />
-      </div>
-    );
+ 
+  return (
+    <div className="App">
+      <Header />
+      <Main />
+    </div>
+  );
 }
 
 export default App;
